@@ -26,22 +26,22 @@ export default function TextForm(props) {
         navigator.clipboard.writeText(text);
     }
 
-    const toggleStyle = () => {
-        if(myStyle.color === "black"){
-            setStyle({
-                'color': 'white',
-                'background': 'black'
-            });
-            setBtnText("Light mode");
-        }
-        else {
-            setStyle({
-                'color': 'black',
-                'background': 'white'
-            });
-            setBtnText("Dark mode");
-        }
-    }
+    // const toggleStyle = () => {
+    //     if(myStyle.color === "black"){
+    //         setStyle({
+    //             'color': 'white',
+    //             'background': 'black'
+    //         });
+    //         setBtnText("Light mode");
+    //     }
+    //     else {
+    //         setStyle({
+    //             'color': 'black',
+    //             'background': 'white'
+    //         });
+    //         setBtnText("Dark mode");
+    //     }
+    // }
 
     const getWords = (text) => {
         let words = text.replace(/\s{2,}/g,' ').split(/\s|\n/);
@@ -51,19 +51,26 @@ export default function TextForm(props) {
         return words.length
     }
 
-    const [myStyle, setStyle] = useState({
-        'color': 'black',
-        'background': 'white'
-    })
-    const [btnText, setBtnText] = useState("Dark mode")
+    // const [myStyle, setStyle] = useState({
+    //     'color': 'black',
+    //     'background': 'white'
+    // })
+    // const [btnText, setBtnText] = useState("Dark mode")
+
     const [text, setText] = useState('');
     return (
         <>
-        <div className="container" style={myStyle}>
+        <div className={`container text-${props.mode==='light'?'dark':'light'}`}>
             <form>
             <div className="form-group mt-5">
             <h2>{props.heading}</h2>
-            <textarea className="form-control" onChange={handleChange} value={text} id="txt" rows="8"></textarea>
+            <textarea
+                className={`form-control text-${props.mode==='light'?'dark':'light'} bg-${props.mode}`}
+                onChange={handleChange}
+                value={text}
+                id="txt"
+                rows="8">
+                </textarea>
             </div>
             </form>
             <em>Result:</em>
@@ -76,14 +83,13 @@ export default function TextForm(props) {
             <button className="btn btn-danger ml-3" onClick={handleClear}>Clear</button>
             <button className="btn btn-secondary ml-3" onClick={handleCopy}>Copy</button>
         </div>
-        <div className="container mt-5">
+        <div className={`container mt-5 text-${props.mode==='light'?'dark':'light'}`}>
             <h3>Your text summary:</h3>
             <p> { getWords(text) } words <br/>
                 { text.length } characters <br/>
                 { getWords(text) * 0.008 } minutes read
             </p>
         </div>
-        <button className="btn btn-dark mr-3 position-sticky float-right" onClick={toggleStyle}>{btnText}</button>
         </>
     )
 }
