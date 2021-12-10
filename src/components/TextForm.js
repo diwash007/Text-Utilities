@@ -24,6 +24,7 @@ export default function TextForm(props) {
 
     const handleCopy = () => {
         navigator.clipboard.writeText(text);
+        props.showAlert("Text Copied Successfully!", "success");
     }
 
     // const toggleStyle = () => {
