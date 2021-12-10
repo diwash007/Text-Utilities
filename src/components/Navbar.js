@@ -20,8 +20,7 @@ export default function Navbar(props) {
         </div>
 
         <div className={`float-end form-check form-switch text-${props.mode==='light'?'dark':'light'}`}>
-        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onClick={props.toggleMode}/>
-        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable Dark Mode</label>
+        <div className={`rounded-circle bg-${props.mode==='light'?'dark':'light'} color-dot`} onClick={props.toggleMode}></div>
         </div>
         </nav>
     )

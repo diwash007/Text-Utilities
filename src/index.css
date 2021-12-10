@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.color-dot {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  cursor: pointer;
+}
