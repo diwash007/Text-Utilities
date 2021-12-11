@@ -1,16 +1,16 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+// } from "react-router-dom";
 
 import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import {useState} from 'react'
 import Alert from './components/Alert';
-import About from './components/About';
+// import About from './components/About';
 
 function App() {
   let theme = localStorage.getItem('mode');
@@ -64,18 +64,9 @@ function App() {
 
   return (
     <>
-    <Router>
     <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
     <Alert alert={alert} />
-    <Routes>
-    <Route path="/about">
-      <About />
-    </Route>
-    <Route path="/">
-      <TextForm heading="Enter the text to analyze" mode={mode} showAlert={showAlert}/>
-    </Route>
-    </Routes>
-    </Router>
+    <TextForm heading="Enter the text to analyze" mode={mode} showAlert={showAlert}/>
     </>
   );
 }
